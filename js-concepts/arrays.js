@@ -13,3 +13,15 @@ hobbies.push("Soccer")
 //Although the hobbies array is a constant, when we call a push method
 //it does not change the location of the array in the memory. 
 console.log(hobbies)
+
+//When you use the slice method, you're copying the values of the original array
+//to another, without modifying the first one
+const slicedArray = hobbies.slice()
+console.log("Sliced array: ")
+console.log(slicedArray)
+
+//If you try to manually insert the original array inside of a new one, it will
+//create an array with another array inside of it (wrong way of doing it)
+const copiedArray = [hobbies]
+console.log("Copied array: ")
+console.log(copiedArray)
