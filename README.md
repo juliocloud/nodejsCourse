@@ -1,3 +1,3 @@
-NodeJS Academind
+# NodeJS Academind
 
-All code and comments written by Júlio
+### All code and comments written by Júlio Juriolli
