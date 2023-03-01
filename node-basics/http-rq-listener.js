@@ -9,7 +9,7 @@ const http = require('http')
 function rqListener(req, res){
     console.log(req)
     process.exit() 
-    // We generally don't call an exit action. In this case, we're finishing the server imeddiatly when there's a requisition
+    // We generally don't call an exit action. In this case, wwe're finishing the server immediatly after a requisition
 }
 
 const server = http.createServer(rqListener) //Request Listener as an argument (function that will execute for every request)
