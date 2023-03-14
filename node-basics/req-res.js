@@ -8,7 +8,6 @@ const fs = require('fs')
 const server = http.createServer((req, res) => {
     const url = req.url
     const method = req.method
-
     /*
     * We have a form with a POST method pointing /message address. And then
     * we return the 302 status code
@@ -22,7 +21,30 @@ const server = http.createServer((req, res) => {
     }
 
     if(url === '/message' && method === 'POST'){
-        fs.writeFileSync("textoexemplo.txt", "Texto escrito com sucesso")
+        const body = []
+        /*
+        * For every data chunk we receive as a request, we're going to
+        * push it to an array
+        */
+
+        req.on('data', (chunk) => {
+            body.push(chunk)
+        })
+
+        /* 
+        * 
+        * Then, at the end of the stream of the data, we're going to call a buffer method called "concat"
+        * This method will take the hex values of the buffer and convert it
+        * 
+        */
+
+        req.on('end', () => {
+            const parsedBody = Buffer.concat(body).toString();
+            const message = parsedBody.split('=')[1]
+
+            console.log(">>>>", message)
+            fs.writeFileSync("textoexemplo.txt", message)
+        })
         res.statusCode = 302
         res.setHeader('Location', '/');
         return res.end()
