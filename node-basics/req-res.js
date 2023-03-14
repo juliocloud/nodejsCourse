@@ -38,16 +38,19 @@ const server = http.createServer((req, res) => {
         * 
         */
 
-        req.on('end', () => {
+        return req.on('end', () => { //When  we return the function, it gets executed immediatly
             const parsedBody = Buffer.concat(body).toString();
             const message = parsedBody.split('=')[1]
 
             console.log(">>>>", message)
-            fs.writeFileSync("textoexemplo.txt", message)
+            //fs.writeFileSync("textoexemplo.txt", message) //Write file sync will stop the code until it already wrote it. We must use write file instead
+
+            fs.writeFile('textoexemplo.txt', message, (err) => {
+                res.statusCode = 302
+                res.setHeader('Location', '/');
+                return res.end()
+            })
         })
-        res.statusCode = 302
-        res.setHeader('Location', '/');
-        return res.end()
     }
     res.setHeader('Content-Type', 'text/html');
     res.write('<html>');
@@ -59,3 +62,10 @@ const server = http.createServer((req, res) => {
 
 server.listen(3000)
 
+/* Important to know:
+* Once we hit the declaration of a listener function, 
+* it will only set the listener, but it will not execute
+* the function immediatly. That's why  when we put that "return res.end()"
+* inside of the callback of req.on, the code will end at the line 57
+* without even executing the callback
+*/
