@@ -46,7 +46,9 @@ const requestListener = (req,res) => {
         })
 
         req.on('end', () => {
-            console.log(message)
+            const data  = Buffer.concat(message).toString()
+            const parsedData = data.split('=')[1]
+            console.log(parsedData)
             res.end()
         })
     }
