@@ -1,0 +1,15 @@
+{
+  "name": "curso-nodejs",
+  "version": "1.0.0",
+  "description": "This is a NodeJS course which explains main Node's funcionalities",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "author": "Julio Cesar Juriolli Filho",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.21"
+  }
+}
