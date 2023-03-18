@@ -3,7 +3,9 @@ const requestListener = (req,res) => {
     const url = req.url;
     const method = req.method;
 
-    if(url == '/'){
+    if(url === '/'){
+        res.setHeader('Content-Type', 'text/html');
+
         res.write("<html>");
 
         res.write('<head> <title> Enter Message </title> </head>');
@@ -23,10 +25,16 @@ const requestListener = (req,res) => {
         res.write("</body>");
 
         res.write("</html>");
-        return res.end();
+        return res.end(); 
+        /*
+        * 
+        * Detail: if we don't have anything oustide of the if statements
+        * we wouldn't need the return.
+        * 
+        */
     }
 
-    if(url == '/users'){
+    if(url === '/users'){
         res.write("<html>");
         res.write("<ul>");
         res.write("<li> User 1 </li>");
@@ -37,7 +45,7 @@ const requestListener = (req,res) => {
         res.end();
     }
 
-    if(url == '/create-user'){
+    if(url === '/create-user'){
         const message = []
         console.log(" Create user ")
 
@@ -49,8 +57,10 @@ const requestListener = (req,res) => {
             const data  = Buffer.concat(message).toString()
             const parsedData = data.split('=')[1]
             console.log(parsedData)
-            res.end()
         })
+        res.statusCode = 302;
+        res.setHeader('Location', '/'); //Redirecting user again to '/'
+        res.end();
     }
 
     
