@@ -1,4 +1,5 @@
 const express = require('express');
+const bodyParser = require('body-parser')
 
 const app = express();
 
@@ -9,14 +10,19 @@ const app = express();
 * 
 */
 
-app.use('/product',(req, res, next) => {
-    console.log("Inside the middleware");
-    res.send("<html> <h1> Adicao de produtos </h1> </html>")
+app.use(bodyParser.urlencoded());
+
+app.use('/add-product',(req, res, next) => {
+    res.send("<form action='/product' method='POST'> <input type='text' name='title'> <button type='submit'> Add product </button> </input> </form>")
  //When we start a middleware, we have to call the next() function in order to continue the execution of the other mws
 })
 
+app.use('/product',(req, res, next) => {
+    console.log(req.body)
+    res.redirect('/')
+});
+
 app.use('/',(req, res, next) => {
-    console.log("Next middleware");
     res.send("<html> <h1> Express JS </h1> </html>")
 });
 
