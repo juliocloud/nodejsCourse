@@ -1,1 +1,1 @@
-const app = require('./4-expressjs/app');
+const app = require('./exercises/2/app');
