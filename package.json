@@ -1,19 +1,4 @@
 {
-<<<<<<< HEAD
-  "name": "curso-nodejs",
-  "version": "1.0.0",
-  "description": "This is a NodeJS course which explains main Node's funcionalities",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js"
-  },
-  "author": "Julio Cesar Juriolli Filho",
-  "license": "ISC",
-  "devDependencies": {
-    "nodemon": "^2.0.21"
-  }
-=======
   "dependencies": {
     "body-parser": "^1.20.2",
     "express": "^4.18.2"
@@ -40,5 +25,4 @@
     "url": "https://github.com/juliocjuri/Curso-NodeJS/issues"
   },
   "homepage": "https://github.com/juliocjuri/Curso-NodeJS#readme"
->>>>>>> a65a0b459ed55800d436af37daadedadade58f8a
 }
