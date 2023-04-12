@@ -4,6 +4,11 @@ const express = require('express')
 
 const router = express.Router()
 
+const rootDir = require('../util/path')
+
+console.log(">>")
+console.log(rootDir)
+
 console.log(__dirname)
 
 router.get('/', (req, res, next) => {
