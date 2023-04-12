@@ -7,8 +7,9 @@ const shopRoutes = require('./routes/shop')
 
 const app = express()
 
-app.use(bodyParser.urlencoded({extended: false}))
 
+app.use(bodyParser.urlencoded({extended: false}))
+app.use(express.static(path.join(__dirname, 'public'))); // Giving read access to the files in this folder
 app.use(shopRoutes)
 app.use('/admin', adminRoutes)
 
