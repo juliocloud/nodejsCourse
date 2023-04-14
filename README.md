@@ -37,5 +37,12 @@ The last step of the creation of the server is to open a port in which we can li
     server.listen(3000)
 
 - Everytime someone tries to access our server on the 3000 port, our arrow function will be called. This is called a *requisition*. That's why we have the req and res parameters inside the function.
+---
 
-    
+## Express
+
+With the presence of the express framework, we can make things less complicated. 
+
+    const express = require('express')
+    const app = express()
+    app.use( /* insert here the routes we want to use*/)
