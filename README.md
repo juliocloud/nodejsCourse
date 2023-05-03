@@ -39,18 +39,34 @@ The last step of the creation of the server is to open a port in which we can li
 - Everytime someone tries to access our server on the 3000 port, our arrow function will be called. This is called a *requisition*. That's why we have the req and res parameters inside the function.
 ---
 
-## Express
+# Express
 
-With the presence of the express framework, we can make things less complicated. 
+With the presence of the express framework, we can make things less complicated. With the simple snippet below, we are starting a server, receiving requests and listening to them in the 3000 port.
 
     const express = require('express')
     const app = express()
 
     app.use('/', (req, res, next) => {
 
-        //This is a middlewares
+        //This is a middleware
         //We'll pass this function as the listener to our requests
         //Usually, here, we pass the routes of our project as the listeners
 
     })
     app.listen(3000)
+
+- 'use' is a method from app that indicates that every request (whether it's a GET or POST request) will be handled by this middleware. Whenever someone access the route '/' it will be handled by this middleware.
+
+If we want to specify a type of request for teh middleware, we'll pass it as the method to app.
+
+    app.get('/getusers', (req, res) => {
+        res.send(
+            //Here we'll send the users back to whoever is making the GET request
+        )
+    })
+
+    app.post('/createuser', (req, res) => {
+        //Here we'll hadle with a user creation
+    })
+
+
