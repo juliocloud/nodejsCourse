@@ -45,4 +45,12 @@ With the presence of the express framework, we can make things less complicated.
 
     const express = require('express')
     const app = express()
-    app.use( /* insert here the routes we want to use*/)
+
+    app.use('/', (req, res, next) => {
+
+        //This is a middlewares
+        //We'll pass this function as the listener to our requests
+        //Usually, here, we pass the routes of our project as the listeners
+
+    })
+    app.listen(3000)

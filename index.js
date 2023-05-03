@@ -1,4 +1,4 @@
-let dfroute = './exercises/3/app'
+let dfroute = './6-dynamic-content'
 
 console.log(`[index.js] Serving file ${dfroute}`)
 
